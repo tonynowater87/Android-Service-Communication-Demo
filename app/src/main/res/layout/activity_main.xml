@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tonynowater.hyenatest.app.views.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".app.views.main.MainActivity">
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchForeground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_size_xlarge"
+            android:checked="@={vm.enableForeground}"
+            android:onCheckedChanged="@{(switch, checked) -> vm.onCheckedChanged(checked)}"
+            android:text="@string/foregroundSwitch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> vm.connected ? vm.disconnect() : vm.connect()}"
+            android:text="@{vm.connected ? @string/connected : @string/connect}"
+            app:bindButtonColor="@{vm.connected}"
+            app:layout_constraintStart_toStartOf="@id/switchForeground"
+            app:layout_constraintTop_toBottomOf="@+id/switchForeground"
+            tools:text="@string/connect" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container_view"
+            android:name="com.tonynowater.hyenatest.app.views.main.MainFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/margin_padding_size_medium"
+            android:tag="mainFragment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonConnect" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:isVisible="@{vm.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

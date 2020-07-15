@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Service Communication Demo</string>
+    <string name="foregroundSwitch">Foreground</string>
+    <string name="connect">Connect</string>
+    <string name="connected">Connected</string>
+    <string name="speed_unit">KM/H</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="notification_status">Status：%1$s</string>
+    <string name="notification_speed">Speed：%1$d</string>
+</resources>
