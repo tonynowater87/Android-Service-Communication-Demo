@@ -1,2 +1,2 @@
-rootProject.name='hyena-company-test'
+rootProject.name='Android-Service-Communication-Demo'
 include ':app'
